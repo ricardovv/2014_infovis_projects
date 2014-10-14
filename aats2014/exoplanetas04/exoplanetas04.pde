@@ -30,9 +30,8 @@ float p2_posX = 0;
 float p2_posY = p1_posY + p1_h + 5;
 
 //Colores; verde, rosado, celeste
-color[] color_font = {
-  color(50, 255, 150), color(#EE88FF), color(#00EEFF)
-}; 
+color[] color_font = {  color(50, 255, 150), color(255, 100, 250), color(0, 235, 250) }; 
+//color[] color_font = {  color(50, 255, 150), color(255, 100, 250), color(0, 235, 250) }; 
 color colBG = 240;
 
 
@@ -74,9 +73,6 @@ void draw() {
     p.rollover(mouseX, mouseY);
   }//end for
 
-
-
-
   if (onBoceto) {
     image(boceto, -borde, -borde);
   }
@@ -88,6 +84,9 @@ void draw() {
 
   resetMatrix();
 }//end draw
+
+
+
 
 //carga imagen boceto
 void keyPressed() {

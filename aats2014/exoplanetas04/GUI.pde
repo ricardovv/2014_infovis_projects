@@ -9,7 +9,7 @@ void years(float x_, float y_){
 
   for(int i=0; i<cantidadYears; i++){
    
-   fill(color_font[1]);
+   fill(color_font[2]);
    textAlign(LEFT); 
    textSize(12);
    text(1995+i, 5 + x_+spacer*i,  y_-4);//texto years
