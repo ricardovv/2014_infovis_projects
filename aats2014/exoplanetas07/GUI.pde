@@ -1,6 +1,5 @@
 
 void years(float x_, float y_){
-   float spacer = p1_w/cantidadYears;
    int bgYears_h = 20;
   //bg years
    fill(30);
@@ -10,11 +9,11 @@ void years(float x_, float y_){
    fill(color_font[2]);
    textAlign(CENTER); 
    textSize(10);
-   text(anoInicio+i, borde+4 + x_+spacer*i,  y_-6);//texto years
+   text(anoInicio+i, borde+4 + x_+spacer_years*i,  y_-6);//texto years
    textAlign(LEFT); 
 
    stroke(40);
-   line(x_+spacer*i, y_,    x_+spacer*i,  y_-p2_h);//
+   line(x_+spacer_years*i, y_,    x_+spacer_years*i,  y_-p2_h);//
    noStroke();
  }
 

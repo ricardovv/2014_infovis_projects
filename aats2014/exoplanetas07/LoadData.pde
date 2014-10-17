@@ -2,7 +2,7 @@
 void loadData() {
 int rowCount = 0;
 
-  losDatos = loadTable("exoplanet_eu_catalog_ok.csv", "header");
+  losDatos = loadTable("exoplanet_eu_catalog.csv", "header");
 
   totalDatosRows = losDatos.getRowCount();//contaria lel total de filas de datos
 
@@ -17,8 +17,11 @@ int rowCount = 0;
     data_p_radius = row.getFloat(" radius");
     data_p_discovered = row.getInt(" discovered");
     float data_p_temperature = row.getFloat(" temp_calculated");
-          minYear = min(  minYear, row.getInt(" discovered") );
-          maxYear = max(  maxYear, row.getInt(" discovered") );
+//          minYear = min(  minYear, row.getInt(" discovered") );
+  //        maxYear = max(  maxYear, row.getInt(" discovered") );
+
+int firstYear = row.getInt(" discovered");
+  
     // STAR
     data_s_name = row.getString(" star_name");
     float data_s_radius = row.getFloat(" ra");
@@ -26,9 +29,15 @@ int rowCount = 0;
 
     // crea objetos planetas 
     //float px_, float py_, float pmass_, float pradius_, float pdistToSun_, int pdiscovered_, String pname_
-    planets[rowCount] = new Planet(data_p_discovered, data_p_radius, 100, data_p_radius, 500, data_p_discovered, data_p_name, data_s_name);
+    //planets[rowCount] = new Planet(data_p_discovered, data_p_radius, 100, data_p_radius, 500, data_p_discovered, data_p_name, data_s_name);
+    planets[rowCount] = new Planet(data_p_discovered, data_p_mass, data_p_mass, data_p_radius, 500, data_p_discovered, data_p_name, data_s_name);
     rowCount++;//incremento de rowCount
+
+//  println("rcount; "+ rowCount + " | year: " + firstYear);
+  println("datos; "+ totalDatosRows);
+
   }
+  
 }//end loaddata
 
  

@@ -5,13 +5,10 @@
 //por ver
 //planeta mas grande y pequen
 //distancia del sol maxima y minima
-PImage boceto;
-PImage img_bg;
-boolean onBoceto;
 
 //FONTS
 PFont titFont;
-
+PImage img_bg;
 //Tamanos y posiciones
 int w = 1000;
 int h = 700;
@@ -19,6 +16,7 @@ int h = 700;
 float grilla = w/20;//50 px
 float grillita = grilla/5;//10 px
 float borde = grillita*2;
+float spacer_years;
 
 //panel 1 - w, h, al, an.
 float p1_w = w-borde*2;
@@ -39,9 +37,13 @@ int data_p_discovered;
 //21
 
 //Colores; verde, rosado, celeste
-color[] color_font = {  color(50, 255, 150), color(255, 100, 250), color(0, 235, 250) }; 
+color[] color_font = {  
+  color(50, 255, 150), color(255, 100, 250), color(0, 235, 250)
+}; 
 //Colores; morado, azul, blanco
-color[] color_bg = {  color(100, 0, 200), color(60, 80, 160), color(50, 255, 150) }; 
+color[] color_bg = {  
+  color(100, 0, 200), color(60, 80, 160), color(50, 255, 150)
+}; 
 color colBG = 240;
 
 
@@ -59,7 +61,7 @@ String data_p_name;
 String data_p_details;
 
 String data_s_name;  
- 
+
 Planet[] planets;
 
 
@@ -71,16 +73,22 @@ void setup() {
   background(colBG);
   loadData();
   smooth();
-  boceto = loadImage("exoplanetas03.jpg"); 
   img_bg = loadImage("exoplanetas03_bg.jpg");
   titFont = loadFont("HermeneusOne-Regular-48.vlw");
+  spacer_years = p1_w/cantidadYears;
 
   for (Planet p : planets) {  
     p.display();
     p.rollover(mouseX, mouseY);
-    p.cartelOver(mouseX, mouseY, data_p_name);
   }//end for
 
+  for (Planet p : planets) {  
+    p.cartelOver(mouseX, mouseY, data_p_name);
+    //    p.sistema(60, "Tierra", 15, .1, "Nuestro Sol", 1.0);
+    //    p.sistema(130, "Exoplaneta "+data_p_name, 8500, .5, "Estella "+data_s_name, 2.3);
+  }//end for
+
+  cursor(CROSS);
 }//emd setup
 
 
@@ -106,20 +114,13 @@ void draw() {
 
   for (Planet p : planets) {  
     p.cartelOver(mouseX, mouseY, data_p_name);
-//    p.sistema(60, "Tierra", 15, .1, "Nuestro Sol", 1.0);
-//    p.sistema(130, "Exoplaneta "+data_p_name, 8500, .5, "Estella "+data_s_name, 2.3);
+    //    p.sistema(60, "Tierra", 15, .1, "Nuestro Sol", 1.0);
+    //    p.sistema(130, "Exoplaneta "+data_p_name, 8500, .5, "Estella "+data_s_name, 2.3);
   }//end for
 
 
-println(totalDatosRows);
+  println(spacer_years);
 }//end draw
 
-
-
-
-//carga imagen boceto
-void keyPressed() {
-  onBoceto = !onBoceto;
-}
 
 

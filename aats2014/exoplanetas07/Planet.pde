@@ -11,26 +11,28 @@ class Planet {
 
   //Creating Planet - - - - - - - - - - - - - - - - 
   Planet(float px_, float py_, float pmass_, float pradius_, float pdistToSun_, int pdiscovered_, String pname_, String sname_) {
-      px = map(px_, anoInicio, anoFinal, borde, p1_w);
-      //py = map(py_, 0.00007, 47, p2_h, borde);//en relacion a la masa 
-//entre 0.00007 - 0.001
-//entre 0.0021 - 0.01
-//entre 0.0104772992
-//entre 0.02 - 0.098
-//entre 0.1 - 1.0
-//entre 1.0 - 10
-//entre 10 - 20
-//entre 20 - 50
-
-      py = map(py_, 7., 47., 580, p2_posY );//en relacion a la masa 
-      pmass = pmass_;
-      pradius = 5;//pradius = pradius_*20;
-      pdistToSun = pdistToSun_;
-      pdiscovered = pdiscovered_;
-      pname = pname_;
-      pname = sname_;
-      over = false;
-   }//end Planet
+    pmass = pmass_;
+    pradius = 5;//pradius = pradius_*20;
+    pdistToSun = pdistToSun_;
+    pdiscovered = pdiscovered_;
+    pname = pname_;
+    pname = sname_;
+    over = false;
+    px = map(px_, anoInicio, anoFinal, borde*2, p1_w);
+    //py = map(py_, 0.00007, 47, p2_h, borde);//en relacion a la masa 
+      py = map(py_, 1.0, 47., 270.0, 500. );//en relacion a la masa 
+    //1- entre 0.00007 - 0.001 
+//          if(pmass <= 0.1)  {  py = map(py_, 0.1, 47., 270.0, 500. );/*en relacion a la masa*/ }
+    //2- entre 0.0021 - 0.01 | 0.001 - 0.01
+//          if(pmass >= 0.01 && pmass <= 1.0)  {  py = map(py_, 0.1, 1.0, 300.0, 350.0 );/*en relacion a la masa*/ }
+    //3- entre 0.0104772992
+  //        if(pmass >= 1.0 && pmass <= 50.0)  {  py = map(py_, 1.0, 50.0, 350.0, 550.0 );/*en relacion a la masa*/ }
+    //4- entre 0.02 - 0.098
+    //5- entre 0.1 - 1.0
+    //6- entre 1.0 - 10
+    //7- entre 10 - 20
+    //8- entre 20 - 50
+  }//end Planet
 
 
 
@@ -41,25 +43,32 @@ class Planet {
     if (dist <= pradius/2) {
       over = true;
     } 
-    else  {
+    else {
       over = false;
-     }    
+    }
   }//end rollover 
 
   // Display planet - - - - - - - - - - - - - - - - - - - - 
   void display() {
-    int col = 150;
-    fill(col, 150);
+    color colBall = color(200, 200, 0);
+    fill(colBall, 150);
     ellipse(px, py, pradius, pradius);
+    textSize(8);    text("- "+pdiscovered, px, py);
+
     sistema(60, "Tierra", 15, .1, "Nuestro Sol", 1.0);
     if (over) {
-      col = 250;
+      colBall = color(250, 250, 0);
       sistema(130, "Exoplaneta: "+pname, 8500, .5, "Estella "+data_s_name, 2.3);
-      }//end if
+    }//end if
 
+
+    if (pdiscovered == 2000) {
+      colBall = color(250, 0, 0);
+      stroke(200);
+    }//end if
   }//End display
-  
-  
+
+
 
 
   // Display planet - - - - - - - - - - - - - - - - - - - - 
@@ -74,8 +83,8 @@ class Planet {
     if (_posx >= w-140) {
       mov = -40;
     }
-  
-  if (over) {
+
+    if (over) {
       noStroke();
       translate(_posx, _posy);// otra opcion antes q nada para todas las formas
 
@@ -91,16 +100,15 @@ class Planet {
       text("Exoplaneta: "+pname, -anchoc/2+mov + septxt, -altoc + 3);
 
       textSize(9);
-      text("Año Descubrimiento: "+pdiscovered+" \nEstrella: "+" \nMasa: "+pmass, -anchoc/2+mov + septxt, -altoc + septxt + 20);
+      text("Estrella: "+" \nMasa: "+pmass, -anchoc/2+mov + septxt, -altoc + septxt + 20);
 
-      resetMatrix();// no afecta al rect extra
+      //      resetMatrix();// no afecta al rect extra
     }//end if
-
   }//cartelOver 
 
 
 
-  void sistema(float posY,  String p2_p_nomb, float p2_p_dist, float p2_p_tam, String p2_s_nomb, float p2_s_tam) {  
+  void sistema(float posY, String p2_p_nomb, float p2_p_dist, float p2_p_tam, String p2_s_nomb, float p2_s_tam) {  
     int factorAmp = 50;
     //SOL
     float _sX = p1_w-100;//posicion del sol
@@ -114,12 +122,12 @@ class Planet {
     float _pY = p1_posY+posY;
     String _pNom = p2_p_nomb;
     float _ptam = p2_p_tam * factorAmp;
-  
+
     //linea distancia
     stroke(50); 
     line(_sX, _sY, _pX, _pY);
     noStroke();
-  
+
     //sol
     fill(255, 255, 0, 75);
     ellipse(_sX, _sY, _stam, _stam); 
@@ -127,22 +135,17 @@ class Planet {
     textAlign(CENTER); 
     textSize(10);
     text(_sNom, _sX, _sY-10);
-  
+
     //Planeta
     fill(255, 255, 0, 75);
     ellipse(_pX, _pY, _ptam, _ptam); 
     fill(color_font[2]);
     textAlign(CENTER); 
     text(_pNom, _pX, _sY-10);
-  
+
     textAlign(LEFT);
-  
   }//end sistema
-
- 
-  
 }//end CLASE
-
 
 
 
