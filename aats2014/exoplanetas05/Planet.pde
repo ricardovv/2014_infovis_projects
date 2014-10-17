@@ -7,34 +7,45 @@ class Planet {
   String pname;
   //  float sx,sy, sdiam, smass, sradius
   //  String sname;
-  boolean over = false;
-
+  boolean over;
 
   //Creating Planet - - - - - - - - - - - - - - - - 
   Planet(float px_, float py_, float pmass_, float pradius_, float pdistToSun_, int pdiscovered_, String pname_) {
-      px = map(px_, 1998, 2014, borde, p1_w);
-      py = map(py_, 0, 2, p1_h, borde); 
+      px = map(px_, anoInicio, anoFinal, borde, p1_w);
+      //py = map(py_, 0.00007, 47, p2_h, borde);//en relacion a la masa 
+//entre 0.00007 - 0.001
+//entre 0.0021 - 0.01
+//entre 0.0104772992
+//entre 0.02 - 0.098
+//entre 0.1 - 1.0
+//entre 1.0 - 10
+//entre 10 - 20
+//entre 20 - 50
+
+
+      py = map(py_, 0.00007, 47, 100, 20000);//en relacion a la masa 
       pmass = pmass_;
-      pradius = pradius_*20;
+      pradius = 5;//pradius = pradius_*20;
       pdistToSun = pdistToSun_;
       pdiscovered = pdiscovered_;
       pname = pname_;
-  }//end Planet
+      over = false;
+
+   }//end Planet
 
 
   // mouse is over planet? - - - - - - - - - - - - - - - - - - - - 
   void rollover(float mx, float my) {
     float dist = dist(px, py, mx, my);
-    ellipse(mx, my, 20, 20);
+    //ellipse(mx, my, 20, 20);
 
     if (dist <= pradius/2) {
-      planetOver = true;//check cuado es over, para mostrar panel 1
       over = true;
+      planetOver = true;//check cuado es over, para mostrar panel 1
     } 
     else  {
-      planetOver = false;//check cuado es over, para mostrar panel 1
       over = false;
-      //planetOver = false;//check cuado es over, para mostrar panel 1
+      planetOver = false;//check cuado es over, para mostrar panel 1
      }
     
 
@@ -48,22 +59,25 @@ class Planet {
       col = 250;
       }//end if
     fill(col, 150);
-    ellipse(px, py, pradius, pradius);
+     ellipse(px, py, pradius, pradius);
   }//End display
   
   
  // Display planet - - - - - - - - - - - - - - - - - - - - 
   void detail() {//details on over, names, other scientific info 
     if (over) {
-      fill(50); textSize(10); text(pname + " - " + pdiscovered, px, py+10);
+      cartelOver(mouseX, mouseY, "esto es");
     }//end if
     
   }//end detail   
    
+
+ 
    
    
   
 }//end CLASE
+
 
 
 

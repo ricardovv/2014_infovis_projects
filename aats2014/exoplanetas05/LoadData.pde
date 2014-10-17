@@ -13,8 +13,9 @@ int rowCount = 0;
   for (TableRow row : losDatos.rows()) {
     // PLANETS
     data_p_name = row.getString("# name");
+    data_p_mass = row.getFloat(" mass");
     float data_p_radius = row.getFloat(" radius");
-    int data_p_discovered= row.getInt(" discovered");
+    data_p_discovered = row.getInt(" discovered");
     float data_p_temperature = row.getFloat(" temp_calculated");
           minYear = min(  minYear, row.getInt(" discovered") );
           maxYear = max(  maxYear, row.getInt(" discovered") );

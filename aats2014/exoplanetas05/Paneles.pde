@@ -3,7 +3,7 @@ void panel1() {
   fill(10);
   rect(p1_posX, p1_posY, p1_w, p1_h);
   //Descripcion Panel 1
-  textSize(12);
+  textSize(12);  fill(100);
   text("Comparacion Tierra-Exoplaneta: tamaños y distancia a su sol.", p1_posX+10, p1_posY+16);
 
   //Tierra
@@ -12,7 +12,7 @@ void panel1() {
 
   if(planetOver){
     //Exosistema
-//    sistema(130, "Exoplaneta "+data_p_name, 8500, .5, "Estella "+data_s_name, 2.3);
+    //    sistema(130, "Exoplaneta "+data_p_name, 8500, .5, "Estella "+data_s_name, 2.3);
     sistema(130, "Exoplaneta "+data_p_name, 8500, .5, "Estella "+data_s_name, 2.3);
   }
   
@@ -22,8 +22,8 @@ void panel1() {
 
 
 void panel2() {
-  fill(100, 100);
-//  rect(p2_posX, p2_posY, p2_w, p2_h);
+  fill(0);
+  rect(p2_posX, p2_posY, p2_w, p2_h);
 
   years(0, p1_posY + p1_h + p2_h);//anos abajo
 }
