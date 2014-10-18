@@ -8,6 +8,7 @@
 
 //FONTS
 PFont titFont;
+PFont titFont2;
 PImage img_bg;
 //Tamanos y posiciones
 int w = 1000;
@@ -75,6 +76,7 @@ void setup() {
   smooth();
   img_bg = loadImage("exoplanetas03_bg.jpg");
   titFont = loadFont("HermeneusOne-Regular-48.vlw");
+  titFont2 = createFont("sans", 10);
   spacer_years = p1_w/cantidadYears;
 
   for (Planet p : planets) {  
@@ -98,6 +100,13 @@ void setup() {
 void draw() {
   background(colBG);   
   image(img_bg, 0, 0);  
+  
+  //tits
+  textFont(titFont); textSize(30);  fill(color_font[0]);
+  text("Exoplanetas", p1_posX, borde*2);
+  textFont(titFont2); textSize(12);  fill(color_font[1]);
+  text("Planetas fuera del sistema solar descubiertos desde 1995", w/5, borde*2);
+ 
 
   // Display planets
   //  translate(borde, borde);//mueve todo

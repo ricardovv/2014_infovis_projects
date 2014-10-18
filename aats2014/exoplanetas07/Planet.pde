@@ -20,7 +20,7 @@ class Planet {
     over = false;
     px = map(px_, anoInicio, anoFinal, borde*2, p1_w);
     //py = map(py_, 0.00007, 47, p2_h, borde);//en relacion a la masa 
-      py = map(py_, 1.0, 47., 270.0, 500. );//en relacion a la masa 
+      py = map(py_, 1.0, 47., 265.0, 650. );//en relacion a la masa 
     //1- entre 0.00007 - 0.001 
 //          if(pmass <= 0.1)  {  py = map(py_, 0.1, 47., 270.0, 500. );/*en relacion a la masa*/ }
     //2- entre 0.0021 - 0.01 | 0.001 - 0.01
